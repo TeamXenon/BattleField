@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 
 namespace BattleField
@@ -7,38 +7,59 @@ namespace BattleField
     {
         // tova e klasa v koito se pravqt magiite
         private static readonly Random rand = new Random();
-        private const double LOWERBOUNDMINES = 0.15;
-        private const double UPPERBOUNTMINES = 0.3;
+        private const double LowerMineLimit = 0.15;
+        private const double UpperMineLimit = 0.3;
+        private const char EmptyCell = '-';
+        private const char DetonatedCell = 'X';
         
         public static char[,] GenerateField(int size)
         {
-            char[,] field = new char[size, size];
-            int minesCount = DetermineMineCount(size);
+            char[,] field = GenerateEmptyField(size);
 
-            for (int i = 0; i < size; i++)
-            {
-                for (int j = 0; j < size; j++)
+            // in a new method
+            GenerateMines(size, field);
+
+            return field;
+        }
+
+        // extrated method
+        private static char[,] GenerateMines(int size, char[,] field)
+        {
+                List<Mine> mines = new List<Mine>();
+
+                int minesCount = DetermineMineCount(size);
+
+                for (int i = 0; i < minesCount; i++)
                 {
-                    field[i, j] = '-';
+                    int mineX = rand.Next(0, size);
+                    int mineY = rand.Next(0, size);
+                    Mine newMine = new Mine() { X = mineX, Y = mineY };
+
+                    if (GameServices.Contains(mines, newMine))
+                    {
+                        i--;
+                        continue;
+                    }
+
+                    int mineType = rand.Next('1', '6');
+                    field[mineX, mineY] = Convert.ToChar(mineType);
                 }
-            }
 
-            List<Mine> mines = new List<Mine>();
-            for (int i = 0; i < minesCount; i++)
-            {
-                int mineX = rand.Next(0, size);
-                int mineY = rand.Next(0, size);
-                Mine newMine = new Mine() { X = mineX, Y = mineY };
+                return field;
+        }
 
-                if (GameServices.Contains(mines, newMine))
+        // extrated method
+        private static char[,] GenerateEmptyField(int size)
+        {
+                char[,] field = new char[size, size];
+
+                for (int i = 0; i < size; i++)
                 {
-                    i--;
-                    continue;
+                    for (int j = 0; j < size; j++)
+                    {
+                        field[i, j] = EmptyCell;
+                    }
                 }
-
-                int mineType = rand.Next('1', '6');
-                field[mineX, mineY] = Convert.ToChar(mineType);
-            }
 
             return field;
         }
@@ -46,15 +67,15 @@ namespace BattleField
         private static int DetermineMineCount(int size)
         {
             double fields = (double)size * size;
-            int lowBound = (int)(LOWERBOUNDMINES * fields);
-            int upperBound = (int)(UPPERBOUNTMINES * fields);
+            int lowBound = (int)(LowerMineLimit * fields);
+            int upperBound = (int)(UpperMineLimit * fields);
 
             return rand.Next(lowBound, upperBound);
         }
 
         private static bool Contains(List<Mine> list, Mine mine)
         {
-            //abe tui e malko typo napraveno ama pyk bachka
+            //renaming
             foreach (Mine mina in list)
             {
                 if (mina.X == mine.X && mina.Y == mine.Y)
@@ -72,7 +93,8 @@ namespace BattleField
             {
                 for (int j = 0; j < field.GetLength(1); j++)
                 {
-                    if (field[i, j] != '-' && field[i, j] != 'X')
+                    // for const
+                    if (field[i, j] != EmptyCell && field[i, j] != DetonatedCell)
                     {
                         return true;
                     }
@@ -87,12 +109,13 @@ namespace BattleField
             if (x < 0 || y < 0 || x >= field.GetLength(0) || y >= field.GetLength(1))
             {
                 return false;
+
             }
 
             return true;
         }
 
-        public static void Гърми(char[,] field, Mine mine)
+        public static void Explode(char[,] field, Mine mine)
         {
             char mineType = field[mine.X, mine.Y];
 
@@ -135,27 +158,27 @@ namespace BattleField
 
             if (VPoletoLiE(field, mine.X, mine.Y))
             {
-                field[mine.X, mine.Y] = 'X';
+                field[mine.X, mine.Y] = DetonatedCell;
             }
 
             if (VPoletoLiE(field, URcorner.X, URcorner.Y))
             {
-                field[URcorner.X, URcorner.Y] = 'X';
+                field[URcorner.X, URcorner.Y] = DetonatedCell;
             }
 
             if (VPoletoLiE(field, ULcorner.X, ULcorner.Y))
             {
-                field[ULcorner.X, ULcorner.Y] = 'X';
+                field[ULcorner.X, ULcorner.Y] = DetonatedCell;
             }
 
             if (VPoletoLiE(field, DRcorner.X, DRcorner.Y))
             {
-                field[DRcorner.X, DRcorner.Y] = 'X';
+                field[DRcorner.X, DRcorner.Y] = DetonatedCell;
             }
 
             if (VPoletoLiE(field, DLcorner.X, DLcorner.Y))
             {
-                field[DLcorner.X, DLcorner.Y] = 'X';
+                field[DLcorner.X, DLcorner.Y] = DetonatedCell;
             }
         }
 
@@ -167,7 +190,7 @@ namespace BattleField
                 {
                     if(VPoletoLiE(field, i,j))
                     {
-                        field[i, j] = 'X';
+                        field[i, j] = DetonatedCell;
                     }
                 }
             }
@@ -183,22 +206,22 @@ namespace BattleField
 
             if (VPoletoLiE(field, Up.X, Up.Y))
             {
-                field[Up.X, Up.Y] = 'X';
+                field[Up.X, Up.Y] = DetonatedCell;
             }
 
             if (VPoletoLiE(field, Down.X, Down.Y))
             {
-                field[Down.X, Down.Y] = 'X';
+                field[Down.X, Down.Y] = DetonatedCell;
             }
 
             if (VPoletoLiE(field, Left.X, Left.Y))
             {
-                field[Left.X, Left.Y] = 'X';
+                field[Left.X, Left.Y] = DetonatedCell;
             }
 
             if (VPoletoLiE(field, Right.X, Right.Y))
             {
-                field[Right.X, Right.Y] = 'X';
+                field[Right.X, Right.Y] = DetonatedCell;
             }
         }
 
@@ -220,7 +243,7 @@ namespace BattleField
 
                     if (VPoletoLiE(field, i, j))
                     {
-                        field[i, j] = 'X';
+                        field[i, j] = DetonatedCell;
                     }
                 }
             }
@@ -235,7 +258,7 @@ namespace BattleField
                 {
                     if (VPoletoLiE(field, i, j))
                     {
-                        field[i, j] = 'X';
+                        field[i, j] = DetonatedCell;
                     }
                 }
             }
@@ -247,7 +270,7 @@ namespace BattleField
             {
                 return false;
             }
-            if (field[x, y] == 'X' || field[x, y] == '-')
+            if (field[x, y] == DetonatedCell || field[x, y] == EmptyCell)
             {
                 return false;
             }
@@ -284,9 +307,9 @@ namespace BattleField
 
         public static Mine ExtractMineFromString(string line)
         {
-            if (line == null || line.Length < 3 || !line.Contains(" "))
+            if (line == null || !line.Contains(" "))
             {
-                Console.WriteLine("Invalid index!");
+                Console.WriteLine(Resource1.InvalidIndex);
                 return null;
             }
 

@@ -5,7 +5,7 @@
         static void Main(string[] args)
         {
             // ei go na pochva
-            Battlefield game = new Battlefield();
+            Engine game = new Engine();
             game.Start();
             // i do tuka ne stigam
         }
