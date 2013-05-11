@@ -61,7 +61,7 @@ namespace BattleField {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &quot;Invalid index!&quot;.
+        ///   Looks up a localized string similar to Invalid index!.
         /// </summary>
         internal static string InvalidIndex {
             get {

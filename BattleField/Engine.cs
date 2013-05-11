@@ -61,7 +61,7 @@ namespace BattleField
 
             while (GameServices.ContainsMines(gameField))
             {
-                GameServices.PokajiMiRezultata(gameField);
+                GameServices.DrawField(gameField);
                 Console.Write("Please enter coordinates: ");
                 readBuffer = Console.ReadLine();
                 Mine mineToBlow =  GameServices.ExtractMineFromString(readBuffer);
@@ -83,7 +83,7 @@ namespace BattleField
                 blownMines++;
             }
 
-            GameServices.PokajiMiRezultata(gameField);
+            GameServices.DrawField(gameField);
             Console.WriteLine("Game over. Detonated mines: {0}", blownMines);
         }
     }

@@ -33,7 +33,7 @@ namespace BattleField
                 {
                     int mineX = rand.Next(0, size);
                     int mineY = rand.Next(0, size);
-                    Mine newMine = new Mine() { X = mineX, Y = mineY };
+                    Mine newMine = new Mine(mineX, mineY);
 
                     if (GameServices.Contains(mines, newMine))
                     {
@@ -151,10 +151,10 @@ namespace BattleField
 
         private static void ExplodeOne(char[,] field, Mine mine)
         {
-            Mine URcorner = new Mine() { X = mine.X - 1, Y = mine.Y - 1 };
-            Mine ULcorner = new Mine() { X = mine.X - 1, Y = mine.Y + 1 };
-            Mine DRcorner = new Mine() { X = mine.X + 1, Y = mine.Y - 1 };
-            Mine DLcorner = new Mine() { X = mine.X + 1, Y = mine.Y + 1 };
+            Mine URcorner = new Mine(mine.X - 1, mine.Y - 1);
+            Mine ULcorner = new Mine(mine.X - 1, mine.Y + 1);
+            Mine DRcorner = new Mine(mine.X + 1, mine.Y - 1);
+            Mine DLcorner = new Mine(mine.X + 1, mine.Y + 1);
 
             if (VPoletoLiE(field, mine.X, mine.Y))
             {
@@ -199,10 +199,10 @@ namespace BattleField
         private static void ExplodeThree(char[,] field, Mine mine)
         {
             ExplodeTwo(field, mine);
-            Mine Up = new Mine() { X = mine.X - 2, Y = mine.Y };
-            Mine Down = new Mine() { X = mine.X + 2, Y = mine.Y };
-            Mine Left = new Mine() { X = mine.X, Y = mine.Y - 2 };
-            Mine Right = new Mine() { X = mine.X, Y = mine.Y + 2 };
+            Mine Up = new Mine(mine.X - 2, mine.Y);
+            Mine Down = new Mine(mine.X + 2, mine.Y);
+            Mine Left = new Mine(mine.X, mine.Y - 2);
+            Mine Right = new Mine(mine.X, mine.Y + 2);
 
             if (VPoletoLiE(field, Up.X, Up.Y))
             {
@@ -278,28 +278,29 @@ namespace BattleField
             return true;
         }
 
-        public static void PokajiMiRezultata(char[,] field)
+        public static void DrawField(char[,] field)
         {
             Console.Write("   ");
-            int size = field.GetLength(0);
-            for (int i = 0; i < size; i++)
+            int fieldSize = field.GetLength(0);
+            for (int col = 0; col < fieldSize; col++)
             {
-                Console.Write("{0} ", i);
+                Console.Write("{0} ", col);
             }
             Console.WriteLine();
             Console.Write("   ");
-            for (int i = 0; i < size*2; i++)
+
+            for (int border = 0; border < fieldSize * 2; border++)
             {
                 Console.Write("-");
             }
             Console.WriteLine();
 
-            for (int i = 0; i < size; i++)
+            for (int row = 0; row < fieldSize; row++)
             {
-                Console.Write("{0} |", i);
-                for (int j = 0; j < size; j++)
+                Console.Write("{0} |", row);
+                for (int col = 0; col < fieldSize; col++)
                 {
-                    Console.Write("{0} ", field[i,j]);
+                    Console.Write("{0} ", field[row,col]);
                 }
                 Console.WriteLine();
             }
@@ -307,30 +308,32 @@ namespace BattleField
 
         public static Mine ExtractMineFromString(string line)
         {
-            if (line == null || !line.Contains(" "))
+            bool lineEmpty = (line == null) || (!line.Contains(" "));
+            if (lineEmpty)
             {
                 Console.WriteLine(Resource1.InvalidIndex);
                 return null;
             }
 
             string[] splited = line.Split(' ');
+            int row = 0;
+            int col = 0;
 
-            int x = 0;
-            int y = 0;
-
-            if (!int.TryParse(splited[0], out x))
+            bool isValidRow = int.TryParse(splited[0], out row);
+            if (!isValidRow)
             {
-                Console.WriteLine("Invalid index!");
+                Console.WriteLine(Resource1.InvalidIndex);
                 return null;
             }
 
-            if (!int.TryParse(splited[1], out y))
+            bool isValidCol = int.TryParse(splited[1], out col);
+            if (!isValidCol)
             {
-                Console.WriteLine("Invalid index!");
+                Console.WriteLine(Resource1.InvalidIndex);
                 return null;
             }
 
-            return new Mine() { X = x, Y = y };
+            return new Mine(row, col);
         }
     }
 }
