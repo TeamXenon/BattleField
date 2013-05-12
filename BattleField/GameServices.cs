@@ -1,4 +1,4 @@
-﻿ using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace BattleField
@@ -17,31 +17,32 @@ namespace BattleField
             char[,] field = GenerateEmptyField(size);
 
             // in a new method
-            GenerateMines(size, field);
+            field = GenerateMines(field);
 
             return field;
         }
 
         // extrated method
-        private static char[,] GenerateMines(int size, char[,] field)
+        private static char[,] GenerateMines(char[,] field)
         {
                 List<Mine> mines = new List<Mine>();
 
-                int minesCount = DetermineMineCount(size);
+                int minesCount = DetermineMineCount(field.GetLength(0));
 
                 for (int i = 0; i < minesCount; i++)
                 {
-                    int mineX = rand.Next(0, size);
-                    int mineY = rand.Next(0, size);
+                    int mineX = rand.Next(0, field.GetLength(0));
+                    int mineY = rand.Next(0, field.GetLength(1));
+
                     Mine newMine = new Mine(mineX, mineY);
 
-                    if (GameServices.Contains(mines, newMine))
+                    if (GameServices.CheckIfMineExists(mines, newMine))
                     {
                         i--;
                         continue;
                     }
 
-                    int mineType = rand.Next('1', '6');
+                    int mineType = rand.Next('1', '6'); 
                     field[mineX, mineY] = Convert.ToChar(mineType);
                 }
 
@@ -73,16 +74,18 @@ namespace BattleField
             return rand.Next(lowBound, upperBound);
         }
 
-        private static bool Contains(List<Mine> list, Mine mine)
+        private static bool CheckIfMineExists(IList<Mine> list, Mine mine)
         {
             //renaming
-            foreach (Mine mina in list)
+            foreach (Mine currentMine in list)
             {
-                if (mina.X == mine.X && mina.Y == mine.Y)
+                if (currentMine.X == mine.X && currentMine.Y == mine.Y)
                 {
                     return true;
                 }
             }
+
+            list.Add(mine);
 
             return false;
         }
@@ -104,12 +107,14 @@ namespace BattleField
             return false;
         }
 
-        private static bool VPoletoLiE(char[,] field, int x, int y)
+        private static bool IsInsideField(char[,] field, int x, int y)
         {
-            if (x < 0 || y < 0 || x >= field.GetLength(0) || y >= field.GetLength(1))
+            bool rowCondition = x < 0 || x >= field.GetLength(0);
+            bool colCondition = y < 0 || y >= field.GetLength(1);
+
+            if (rowCondition || colCondition)
             {
                 return false;
-
             }
 
             return true;
@@ -156,27 +161,27 @@ namespace BattleField
             Mine DRcorner = new Mine(mine.X + 1, mine.Y - 1);
             Mine DLcorner = new Mine(mine.X + 1, mine.Y + 1);
 
-            if (VPoletoLiE(field, mine.X, mine.Y))
+            if (IsInsideField(field, mine.X, mine.Y))
             {
                 field[mine.X, mine.Y] = DetonatedCell;
             }
 
-            if (VPoletoLiE(field, URcorner.X, URcorner.Y))
+            if (IsInsideField(field, URcorner.X, URcorner.Y))
             {
                 field[URcorner.X, URcorner.Y] = DetonatedCell;
             }
 
-            if (VPoletoLiE(field, ULcorner.X, ULcorner.Y))
+            if (IsInsideField(field, ULcorner.X, ULcorner.Y))
             {
                 field[ULcorner.X, ULcorner.Y] = DetonatedCell;
             }
 
-            if (VPoletoLiE(field, DRcorner.X, DRcorner.Y))
+            if (IsInsideField(field, DRcorner.X, DRcorner.Y))
             {
                 field[DRcorner.X, DRcorner.Y] = DetonatedCell;
             }
 
-            if (VPoletoLiE(field, DLcorner.X, DLcorner.Y))
+            if (IsInsideField(field, DLcorner.X, DLcorner.Y))
             {
                 field[DLcorner.X, DLcorner.Y] = DetonatedCell;
             }
@@ -188,7 +193,7 @@ namespace BattleField
             {
                 for (int j = mine.Y - 1; j <= mine.Y+1; j++)
                 {
-                    if(VPoletoLiE(field, i,j))
+                    if(IsInsideField(field, i,j))
                     {
                         field[i, j] = DetonatedCell;
                     }
@@ -204,22 +209,22 @@ namespace BattleField
             Mine Left = new Mine(mine.X, mine.Y - 2);
             Mine Right = new Mine(mine.X, mine.Y + 2);
 
-            if (VPoletoLiE(field, Up.X, Up.Y))
+            if (IsInsideField(field, Up.X, Up.Y))
             {
                 field[Up.X, Up.Y] = DetonatedCell;
             }
 
-            if (VPoletoLiE(field, Down.X, Down.Y))
+            if (IsInsideField(field, Down.X, Down.Y))
             {
                 field[Down.X, Down.Y] = DetonatedCell;
             }
 
-            if (VPoletoLiE(field, Left.X, Left.Y))
+            if (IsInsideField(field, Left.X, Left.Y))
             {
                 field[Left.X, Left.Y] = DetonatedCell;
             }
 
-            if (VPoletoLiE(field, Right.X, Right.Y))
+            if (IsInsideField(field, Right.X, Right.Y))
             {
                 field[Right.X, Right.Y] = DetonatedCell;
             }
@@ -241,7 +246,7 @@ namespace BattleField
                     if (DR) continue;
                     if (DL) continue;
 
-                    if (VPoletoLiE(field, i, j))
+                    if (IsInsideField(field, i, j))
                     {
                         field[i, j] = DetonatedCell;
                     }
@@ -256,7 +261,7 @@ namespace BattleField
             {
                 for (int j = mine.Y - 2; j <= mine.Y + 2; j++)
                 {
-                    if (VPoletoLiE(field, i, j))
+                    if (IsInsideField(field, i, j))
                     {
                         field[i, j] = DetonatedCell;
                     }
@@ -266,7 +271,7 @@ namespace BattleField
 
         public static bool IsValidMove(char[,] field, int x, int y)
         {
-            if (!VPoletoLiE(field, x, y))
+            if (!IsInsideField(field, x, y))
             {
                 return false;
             }
