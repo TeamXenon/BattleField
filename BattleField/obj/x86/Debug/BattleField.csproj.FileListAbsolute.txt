@@ -6,3 +6,11 @@ D:\Telerik\GitHub\BattleField\BattleField\obj\x86\Debug\BattleField.Resource1.re
 D:\Telerik\GitHub\BattleField\BattleField\obj\x86\Debug\BattleField.csproj.GenerateResource.Cache
 D:\Telerik\GitHub\BattleField\BattleField\obj\x86\Debug\BattleField.exe
 D:\Telerik\GitHub\BattleField\BattleField\obj\x86\Debug\BattleField.pdb
+D:\BattleField\BattleField\bin\Debug\BattleField.exe.config
+D:\BattleField\BattleField\obj\x86\Debug\BattleField.exe
+D:\BattleField\BattleField\obj\x86\Debug\BattleField.pdb
+D:\BattleField\BattleField\bin\Debug\BattleField.exe
+D:\BattleField\BattleField\bin\Debug\BattleField.pdb
+D:\BattleField\BattleField\obj\x86\Debug\BattleField.csprojResolveAssemblyReference.cache
+D:\BattleField\BattleField\obj\x86\Debug\BattleField.Resource1.resources
+D:\BattleField\BattleField\obj\x86\Debug\BattleField.csproj.GenerateResource.Cache
