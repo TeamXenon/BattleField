@@ -12,7 +12,6 @@ namespace BattleField
         private const double LowerMineLimit = 0.15;
         private const double UpperMineLimit = 0.3;
         public const char EmptyCell = '-';
-        public const char DetonatedCell = 'X';
 
         public char[,] Field { get; set; }
         public int Size { get; set; }
@@ -92,7 +91,7 @@ namespace BattleField
             {
                 for (int j = 0; j < this.Size; j++)
                 {
-                    if (this.Field[i, j] != EmptyCell && this.Field[i, j] != DetonatedCell)
+                    if (this.Field[i, j] != EmptyCell && this.Field[i, j] != Explosion.DetonatedCell)
                     {
                         return true;
                     }

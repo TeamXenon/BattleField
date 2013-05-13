@@ -17,3 +17,11 @@ D:\Telerik\5. Качествен код\Team\TEAM\BattleField\obj\x86\Debug\Batt
 D:\Telerik\5. Качествен код\Team\TEAM\BattleField 5\bin\Debug\BattleField.exe.config
 D:\Telerik\5. Качествен код\Team\TEAM\BattleField 5\obj\x86\Debug\BattleField.exe
 D:\Telerik\5. Качествен код\Team\TEAM\BattleField 5\obj\x86\Debug\BattleField.pdb
+C:\Users\naso\Documents\Visual Studio 2012\BattleField\BattleField 5\bin\Debug\BattleField.exe.config
+C:\Users\naso\Documents\Visual Studio 2012\BattleField\BattleField 5\obj\x86\Debug\BattleField.exe
+C:\Users\naso\Documents\Visual Studio 2012\BattleField\BattleField 5\obj\x86\Debug\BattleField.pdb
+C:\Users\naso\Documents\Visual Studio 2012\BattleField\BattleField 5\obj\x86\Debug\BattleField.csprojResolveAssemblyReference.cache
+C:\Users\naso\Documents\Visual Studio 2012\BattleField\BattleField 5\obj\x86\Debug\BattleField.GameMessage.resources
+C:\Users\naso\Documents\Visual Studio 2012\BattleField\BattleField 5\obj\x86\Debug\BattleField.csproj.GenerateResource.Cache
+C:\Users\naso\Documents\Visual Studio 2012\BattleField\BattleField 5\bin\Debug\BattleField.exe
+C:\Users\naso\Documents\Visual Studio 2012\BattleField\BattleField 5\bin\Debug\BattleField.pdb

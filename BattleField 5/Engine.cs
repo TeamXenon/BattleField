@@ -66,7 +66,7 @@ namespace BattleField
                     continue;
                 }
 
-                GameServices.Explode(field.Field, mineToBlow);
+                Explosion.Explode(field.Field, mineToBlow);
                 blownMines++;
             }
 
