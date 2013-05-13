@@ -6,15 +6,17 @@
 
         internal static bool IsInsideField(char[,] field, int x, int y)
         {
-            bool rowCondition = x < 0 || x >= field.GetLength(0);
-            bool colCondition = y < 0 || y >= field.GetLength(1);
+            bool isXOutsideOfField = x < 0 || x >= field.GetLength(0);
+            bool isYOutsideOfField = y < 0 || y >= field.GetLength(1);
 
-            if (rowCondition || colCondition)
+            if (isXOutsideOfField || isYOutsideOfField)
             {
                 return false;
             }
-
-            return true;
+            else
+            {
+                return true;
+            }
         }      
 
         public static void Explode(char[,] field, Mine mine)
@@ -25,142 +27,133 @@
             {
                 case '1':
                     {
-                        ExplodeOne(field, mine);
+                        ExplosionOne(field, mine);
                     }
                     break;
                 case '2':
                     {
-                        ExplodeTwo(field, mine);
+                        ExplosionTwo(field, mine);
                     }
                     break;
                 case '3':
                     {
-                        ExplodeThree(field, mine);
+                        ExplosionThree(field, mine);
                     }
                     break;
                 case '4':
                     {
-                        ExplodeFour(field, mine);
+                        ExplosionFour(field, mine);
                     }
                     break;
                 case '5':
                     {
-                        ExplodeFive(field, mine);
+                        ExplosionFive(field, mine);
                     }
                     break;
             }
         }
 
-        private static void ExplodeOne(char[,] field, Mine mine)
+        private static void ExplosionOne(char[,] field, Mine mine)
         {
-            Mine URcorner = new Mine(mine.X - 1, mine.Y - 1);
-            Mine ULcorner = new Mine(mine.X - 1, mine.Y + 1);
-            Mine DRcorner = new Mine(mine.X + 1, mine.Y - 1);
-            Mine DLcorner = new Mine(mine.X + 1, mine.Y + 1);
-
             if (IsInsideField(field, mine.X, mine.Y))
             {
                 field[mine.X, mine.Y] = DetonatedCell;
             }
 
-            if (IsInsideField(field, URcorner.X, URcorner.Y))
+            if (IsInsideField(field, mine.X - 1, mine.Y - 1))
             {
-                field[URcorner.X, URcorner.Y] = DetonatedCell;
+                field[mine.X - 1, mine.Y - 1] = DetonatedCell;
             }
 
-            if (IsInsideField(field, ULcorner.X, ULcorner.Y))
+            if (IsInsideField(field, mine.X + 1, mine.Y - 1))
             {
-                field[ULcorner.X, ULcorner.Y] = DetonatedCell;
+                field[mine.X + 1, mine.Y - 1] = DetonatedCell;
             }
 
-            if (IsInsideField(field, DRcorner.X, DRcorner.Y))
+            if (IsInsideField(field, mine.X - 1, mine.Y + 1))
             {
-                field[DRcorner.X, DRcorner.Y] = DetonatedCell;
+                field[mine.X - 1, mine.Y + 1] = DetonatedCell;
             }
 
-            if (IsInsideField(field, DLcorner.X, DLcorner.Y))
+            if (IsInsideField(field, mine.X + 1, mine.Y + 1))
             {
-                field[DLcorner.X, DLcorner.Y] = DetonatedCell;
+                field[mine.X + 1, mine.Y + 1] = DetonatedCell;
             }
         }
 
-        private static void ExplodeTwo(char[,] field, Mine mine)
+        private static void ExplosionTwo(char[,] field, Mine mine)
         {
-            for (int i = mine.X - 1; i <= mine.X + 1; i++)
+            for (int row = mine.X - 1; row <= mine.X + 1; row++)
             {
-                for (int j = mine.Y - 1; j <= mine.Y + 1; j++)
+                for (int col = mine.Y - 1; col <= mine.Y + 1; col++)
                 {
-                    if (IsInsideField(field, i, j))
+                    if (IsInsideField(field, row, col))
                     {
-                        field[i, j] = DetonatedCell;
+                        field[row, col] = DetonatedCell;
                     }
                 }
             }
         }
 
-        private static void ExplodeThree(char[,] field, Mine mine)
+        private static void ExplosionThree(char[,] field, Mine mine)
         {
-            ExplodeTwo(field, mine);
-            Mine Up = new Mine(mine.X - 2, mine.Y);
-            Mine Down = new Mine(mine.X + 2, mine.Y);
-            Mine Left = new Mine(mine.X, mine.Y - 2);
-            Mine Right = new Mine(mine.X, mine.Y + 2);
+            ExplosionTwo(field, mine);
 
-            if (IsInsideField(field, Up.X, Up.Y))
+            if (IsInsideField(field, mine.X, mine.Y - 2))
             {
-                field[Up.X, Up.Y] = DetonatedCell;
+                field[mine.X, mine.Y - 2] = DetonatedCell;
             }
 
-            if (IsInsideField(field, Down.X, Down.Y))
+            if (IsInsideField(field, mine.X + 2, mine.Y))
             {
-                field[Down.X, Down.Y] = DetonatedCell;
+                field[mine.X + 2, mine.Y] = DetonatedCell;
             }
 
-            if (IsInsideField(field, Left.X, Left.Y))
+            if (IsInsideField(field, mine.X, mine.Y + 2))
             {
-                field[Left.X, Left.Y] = DetonatedCell;
+                field[mine.X, mine.Y + 2] = DetonatedCell;
             }
 
-            if (IsInsideField(field, Right.X, Right.Y))
+            if (IsInsideField(field, mine.X - 2, mine.Y))
             {
-                field[Right.X, Right.Y] = DetonatedCell;
+                field[mine.X - 2, mine.Y] = DetonatedCell;
             }
         }
 
-        private static void ExplodeFour(char[,] field, Mine mine)
+        private static void ExplosionFour(char[,] field, Mine mine)
         {
-            for (int i = mine.X - 2; i <= mine.X + 2; i++)
+            for (int row = mine.X - 2; row <= mine.X + 2; row++)
             {
-                for (int j = mine.Y - 2; j <= mine.Y + 2; j++)
+                for (int col = mine.Y - 2; col <= mine.Y + 2; col++)
                 {
-                    bool UR = i == mine.X - 2 && j == mine.Y - 2;
-                    bool UL = i == mine.X - 2 && j == mine.Y + 2;
-                    bool DR = i == mine.X + 2 && j == mine.Y - 2;
-                    bool DL = i == mine.X + 2 && j == mine.Y + 2;
+                    bool isInUpperLeftCorner = row == mine.X - 2 && col == mine.Y - 2;
+                    bool isInBottomLeftCorner = row == mine.X - 2 && col == mine.Y + 2;
+                    bool isInUpperRightCorner = row == mine.X + 2 && col == mine.Y - 2;
+                    bool isInBottomRightCorner = row == mine.X + 2 && col == mine.Y + 2;
 
-                    if (UR) continue;
-                    if (UL) continue;
-                    if (DR) continue;
-                    if (DL) continue;
-
-                    if (IsInsideField(field, i, j))
+                    if (isInUpperLeftCorner || isInBottomLeftCorner || isInUpperRightCorner || isInBottomRightCorner)
                     {
-                        field[i, j] = DetonatedCell;
+                        continue;
+                    }
+
+                    if (IsInsideField(field, row, col))
+                    {
+                        field[row, col] = DetonatedCell;
                     }
                 }
             }
 
         }
 
-        private static void ExplodeFive(char[,] field, Mine mine)
+        private static void ExplosionFive(char[,] field, Mine mine)
         {
-            for (int i = mine.X - 2; i <= mine.X + 2; i++)
+            for (int row = mine.X - 2; row <= mine.X + 2; row++)
             {
-                for (int j = mine.Y - 2; j <= mine.Y + 2; j++)
+                for (int col = mine.Y - 2; col <= mine.Y + 2; col++)
                 {
-                    if (IsInsideField(field, i, j))
+                    if (IsInsideField(field, row, col))
                     {
-                        field[i, j] = DetonatedCell;
+                        field[row, col] = DetonatedCell;
                     }
                 }
             }
