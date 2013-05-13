@@ -47,8 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Engine.cs" />
-    <Compile Include="Explosion.cs" />
-    <Compile Include="GameField.cs" />
     <Compile Include="GameServices.cs" />
     <Compile Include="Mine.cs" />
     <Compile Include="Program.cs" />
