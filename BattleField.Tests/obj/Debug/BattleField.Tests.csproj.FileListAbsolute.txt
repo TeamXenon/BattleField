@@ -1,0 +1,7 @@
+C:\Users\naso\Documents\Visual Studio 2012\BattleField\BattleField.Tests\obj\Debug\BattleField.Tests.csprojResolveAssemblyReference.cache
+C:\Users\naso\Documents\Visual Studio 2012\BattleField\BattleField.Tests\bin\Debug\BattleField.Tests.dll
+C:\Users\naso\Documents\Visual Studio 2012\BattleField\BattleField.Tests\bin\Debug\BattleField.Tests.pdb
+C:\Users\naso\Documents\Visual Studio 2012\BattleField\BattleField.Tests\bin\Debug\BattleField.exe
+C:\Users\naso\Documents\Visual Studio 2012\BattleField\BattleField.Tests\bin\Debug\BattleField.pdb
+C:\Users\naso\Documents\Visual Studio 2012\BattleField\BattleField.Tests\obj\Debug\BattleField.Tests.dll
+C:\Users\naso\Documents\Visual Studio 2012\BattleField\BattleField.Tests\obj\Debug\BattleField.Tests.pdb

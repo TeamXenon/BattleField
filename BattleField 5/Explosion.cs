@@ -4,7 +4,7 @@
     {
         public const char DetonatedCell = 'X';
 
-        internal static bool IsInsideField(char[,] field, int x, int y)
+        public static bool IsInsideField(char[,] field, int x, int y)
         {
             bool isXOutsideOfField = x < 0 || x >= field.GetLength(0);
             bool isYOutsideOfField = y < 0 || y >= field.GetLength(1);
