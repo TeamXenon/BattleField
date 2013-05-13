@@ -1,37 +1,22 @@
-﻿
-using System;
+﻿using System;
 
 namespace BattleField
 {
-    class Engine
+    public class Engine
     {
-        //poLeto za biTka
-        private char[,] gameField;
         public Engine()
         {
-            //gameField = null;
         }
 
         public void Start()
         {
             Console.WriteLine(@"Welcome to ""Battle Field"" game. ");
-            
-            //string readBuffer = null;
-
             int size = GetFieldSize();
-
-            // if (size > 10 || size <= 0)
-            //{ 
-            //    Start();
-            //}
-            //else{
-
-            gameField = GameServices.GenerateField(size);
-            StartInteraction();
-           // }
+            GameField field = new GameField(size);
+            field.GenerateField();
+            StartInteraction(field);
         }
 
-        // extracted method
         private int GetFieldSize()
         {
             int size = 0;
@@ -55,18 +40,17 @@ namespace BattleField
             return size;
         }
 
-        private void StartInteraction()
+        private void StartInteraction(GameField field)
         {
-            Console.Clear();
-
+            string readBuffer = null;
             int blownMines = 0;
 
-            while (GameServices.ContainsMines(gameField))
+            while (field.ContainsMines())
             {
-                GameServices.DrawField(gameField);
-
-                Mine mineToBlow = null;
-                string readBuffer = string.Empty;
+                field.DrawField();
+                Console.Write("Please enter coordinates: ");
+                readBuffer = Console.ReadLine();
+                Mine mineToBlow =  GameServices.ExtractMineFromString(readBuffer);
 
                 while (mineToBlow == null)
                 {
@@ -75,19 +59,18 @@ namespace BattleField
                     mineToBlow = GameServices.ExtractMineFromString(readBuffer);
                 }
 
-                bool isValid = GameServices.IsValidMove(gameField, mineToBlow.X, mineToBlow.Y);
-
-                if (!isValid)
+                bool isValidMove = GameServices.IsValidMove(field.Field, mineToBlow.X, mineToBlow.Y);
+                if (!isValidMove)
                 {
                     Console.WriteLine("Invalid move!");
                     continue;
                 }
 
-                GameServices.Explode(gameField, mineToBlow);
+                GameServices.Explode(field.Field, mineToBlow);
                 blownMines++;
             }
 
-            GameServices.DrawField(gameField);
+            field.DrawField();
             Console.WriteLine("Game over. Detonated mines: {0}", blownMines);
         }
     }

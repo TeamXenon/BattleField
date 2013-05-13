@@ -47,15 +47,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Engine.cs" />
-    <Compile Include="Explosion.cs" />
     <Compile Include="GameField.cs" />
     <Compile Include="GameServices.cs" />
     <Compile Include="Mine.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Resource1.Designer.cs">
+    <Compile Include="GameMessage.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Resource1.resx</DependentUpon>
+      <DependentUpon>GameMessage.resx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -65,9 +64,10 @@
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resource1.resx">
+    <EmbeddedResource Include="GameMessage.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+      <LastGenOutput>GameMessage.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
