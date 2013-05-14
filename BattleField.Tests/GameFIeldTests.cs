@@ -2,6 +2,7 @@
 {
     using System;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System.IO;
 
     [TestClass]
     public class GameFIeldTests
@@ -70,6 +71,33 @@
             }
             bool result = field.ContainsMines();
             Assert.AreEqual(false, result);
+        }
+
+        [TestMethod]
+        public void DrawGamefieldSizeFiveTest()
+        {
+            string inputCommands = "5\n";
+            GameField field = new GameField(5);
+
+            StreamWriter consoleResult = new StreamWriter("consoleOutput.txt");
+
+            using (consoleResult)
+            {
+                Console.SetOut(consoleResult);
+                field.DrawField();
+            }
+
+            StreamReader readerResult = new StreamReader("consoleOutput.txt");
+
+            string gameFieldFirstLine = string.Empty;
+
+            using (readerResult)
+            {
+                gameFieldFirstLine = readerResult.ReadLine();
+            }
+
+            string expectedResult = "   0 1 2 3 4 ";
+            Assert.AreEqual(expectedResult, gameFieldFirstLine);
         }
     }
 }
