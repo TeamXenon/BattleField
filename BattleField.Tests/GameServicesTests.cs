@@ -34,7 +34,7 @@ namespace BattleField.Tests
             if (typeof(Mine) == typeof(BattleField.Mine))
             {
                 isMine = false;
-	        }
+            }
             bool falseResult = false;
             Assert.AreEqual(falseResult, isMine);
         }
