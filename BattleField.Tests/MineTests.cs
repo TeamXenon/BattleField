@@ -11,7 +11,9 @@ namespace BattleField.Tests
         [TestMethod]
         public void MineConstrustor_CreateNewMine()
         {
-            Mine invalidMine = new Mine(2, 2);
+            Mine mine = new Mine(2, 6);
+            Assert.AreEqual(2, mine.X);
+            Assert.AreEqual(6, mine.Y);
         }
 
         [TestMethod]
