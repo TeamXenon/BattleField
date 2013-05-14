@@ -25,12 +25,12 @@ namespace BattleField.Tests
         }
 
         [TestMethod]
-        public void ExtractMineFromString_ShouldReturnFalse()
+        public void ExtractMineFromString_LettersInput()
         {
             string line = "a b";
             Mine mine = GameServices.ExtractMineFromString(line);
-
             bool isMine = true;
+
             if (typeof(Mine) == typeof(BattleField.Mine))
             {
                 isMine = false;
@@ -38,5 +38,38 @@ namespace BattleField.Tests
             bool falseResult = false;
             Assert.AreEqual(falseResult, isMine);
         }
+
+        [TestMethod]
+        public void ExtractMineFromString_EmptyString()
+        {
+            string line = "";
+            Mine mine = GameServices.ExtractMineFromString(line);
+            bool isMine = true;
+
+            if (typeof(Mine) == typeof(BattleField.Mine))
+            {
+                isMine = false;
+            }
+            bool falseResult = false;
+
+            Assert.AreEqual(falseResult, isMine);
+        }
+
+        [TestMethod]
+        public void ExtractMineFromString_LetterAndNumber()
+        {
+            string line = "5 a";
+            Mine mine = GameServices.ExtractMineFromString(line);
+            bool isMine = true;
+
+            if (typeof(Mine) == typeof(BattleField.Mine))
+            {
+                isMine = false;
+            }
+            bool falseResult = false;
+
+            Assert.AreEqual(falseResult, isMine);
+        }
     }
 }
+
