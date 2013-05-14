@@ -1,20 +1,21 @@
-﻿namespace BattleField
-{
-    using System;
+using System;
 
+namespace BattleField
+{
     public class Engine
     {
-        public Engine()
-        {
-        }
+        internal const int MinSize = 0;
+        internal const int MaxSize = 10;
+
+        public Engine() { }
 
         public void Start()
         {
             Console.WriteLine(@"Welcome to ""Battle Field"" game. ");
-            int size = this.GetFieldSize();
+            int size = GetFieldSize();
             GameField field = new GameField(size);
             field.GenerateField();
-            this.StartInteraction(field);
+            StartInteraction(field);
         }
 
         private int GetFieldSize()
@@ -27,7 +28,7 @@
                 string inputCommand = Console.ReadLine();
                 bool isNumber = int.TryParse(inputCommand, out size);
 
-                if (!isNumber || size > 10 || size <= 0)
+                if (!isNumber || size > MaxSize || size <= MinSize)
                 {
                     Console.WriteLine("Wrong format!");
                 }
