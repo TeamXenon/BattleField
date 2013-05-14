@@ -113,6 +113,24 @@ namespace BattleField.Tests
 
             Assert.AreEqual(false, isValidMove);
         }
+
+        [TestMethod]
+        public void ExtractMineFromString_ReturnNullTryWithSpace()
+        {
+            string line = " ";
+            Mine mine = GameServices.ExtractMineFromString(line);
+
+            Assert.AreEqual(mine, null);
+        }
+
+        [TestMethod]
+        public void ExtractMineFromString_ReturnNullTryWithNull()
+        {
+            string line = null;
+            Mine mine = GameServices.ExtractMineFromString(line);
+
+            Assert.AreEqual(mine, null);
+        }
     }
 }
 
