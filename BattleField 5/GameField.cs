@@ -10,7 +10,6 @@
         private const double UpperMineLimit = 0.3;
         private static readonly Random RandomNumber = new Random();
 
-        // Constructor
         public GameField(int size)
         {
             this.Size = size;

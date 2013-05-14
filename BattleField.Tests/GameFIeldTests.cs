@@ -76,10 +76,11 @@
         [TestMethod]
         public void DrawGamefieldSizeFiveTest()
         {
-            string inputCommands = "5\n";
+            string consoleFile = "consoleOutput.txt";
+
             GameField field = new GameField(5);
 
-            StreamWriter consoleResult = new StreamWriter("consoleOutput.txt");
+            StreamWriter consoleResult = new StreamWriter(consoleFile);
 
             using (consoleResult)
             {
@@ -87,7 +88,7 @@
                 field.DrawField();
             }
 
-            StreamReader readerResult = new StreamReader("consoleOutput.txt");
+            StreamReader readerResult = new StreamReader(consoleFile);
 
             string gameFieldFirstLine = string.Empty;
 

@@ -1,6 +1,6 @@
 ﻿namespace BattleField
 {
-    interface IEngine
+    public interface IEngine
     {
         /// <summary>
         /// Start the game logic and user interaction.

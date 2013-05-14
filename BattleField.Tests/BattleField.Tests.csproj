@@ -55,6 +55,7 @@
     <Compile Include="MineTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GameFIeldTests.cs" />
+    <Compile Include="EngineTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BattleField 5\BattleField.csproj">
