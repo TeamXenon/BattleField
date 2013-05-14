@@ -2,7 +2,7 @@
 {
     using System;
 
-    class InvalidMineCoordinatesException : ApplicationException
+    public class InvalidMineCoordinatesException : ApplicationException
     {
         private int MinCoordinate { get; set; }
         private int MaxCoordinate { get; set; }

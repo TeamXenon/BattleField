@@ -13,15 +13,16 @@ namespace BattleField
             {
                 return this.x;
             }
+
             set
             {
-                if (value >= Engine.MinSize || value < Engine.MaxSize)
+                if (Engine.MinSize <= value && value <= Engine.MaxSize)
                 {
                     this.x = value;
                 }
                 else
                 {
-                    throw new ArgumentOutOfRangeException("Coordinates must be between 0 and 10!");
+                    throw new InvalidMineCoordinatesException("Invalid coordinates!", Engine.MinSize, Engine.MaxSize);
                 }
             }
         }
@@ -32,18 +33,20 @@ namespace BattleField
             {
                 return this.y;
             }
+
             set
             {
-                if (value >= Engine.MinSize || value < Engine.MaxSize)
+                if (Engine.MinSize <= value && value <= Engine.MaxSize)
                 {
                     this.y = value;
                 }
                 else
                 {
-                    throw new ArgumentOutOfRangeException("Coordinates must be between 0 and 10!");
+                    throw new InvalidMineCoordinatesException("Invalid coordinates!", Engine.MinSize, Engine.MaxSize);
                 }
             }
         }
+
         public Mine(int x, int y)
         {
             this.X = x;
