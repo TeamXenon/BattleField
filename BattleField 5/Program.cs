@@ -1,13 +1,11 @@
 ﻿namespace BattleField
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main()
         {
-            // ei go na pochva
             Engine game = new Engine();
             game.Start();
-            // i do tuka ne stigam
         }
     }
 }

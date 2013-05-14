@@ -26,29 +26,19 @@
             switch (mineType)
             {
                 case '1':
-                    {
-                        ExplosionOne(field, mine);
-                    }
+                    ExplosionOne(field, mine);
                     break;
                 case '2':
-                    {
-                        ExplosionTwo(field, mine);
-                    }
+                    ExplosionTwo(field, mine);
                     break;
                 case '3':
-                    {
-                        ExplosionThree(field, mine);
-                    }
+                    ExplosionThree(field, mine);
                     break;
                 case '4':
-                    {
-                        ExplosionFour(field, mine);
-                    }
+                    ExplosionFour(field, mine);
                     break;
                 case '5':
-                    {
-                        ExplosionFive(field, mine);
-                    }
+                    ExplosionFive(field, mine);
                     break;
             }
         }
@@ -142,7 +132,6 @@
                     }
                 }
             }
-
         }
 
         private static void ExplosionFive(char[,] field, Mine mine)

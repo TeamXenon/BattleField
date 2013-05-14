@@ -1,8 +1,7 @@
-﻿ using System;
-using System.Collections.Generic;
-
-namespace BattleField
+﻿namespace BattleField
 {
+    using System;
+
     public class GameServices
     {
         public const char EmptyCell = '-';
@@ -14,6 +13,7 @@ namespace BattleField
             {
                 return false;
             }
+
             if (field[x, y] == DetonatedCell || field[x, y] == EmptyCell)
             {
                 return false;

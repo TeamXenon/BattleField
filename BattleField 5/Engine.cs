@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace BattleField
+﻿namespace BattleField
 {
+    using System;
+
     public class Engine
     {
         public Engine()
@@ -11,10 +11,10 @@ namespace BattleField
         public void Start()
         {
             Console.WriteLine(@"Welcome to ""Battle Field"" game. ");
-            int size = GetFieldSize();
+            int size = this.GetFieldSize();
             GameField field = new GameField(size);
             field.GenerateField();
-            StartInteraction(field);
+            this.StartInteraction(field);
         }
 
         private int GetFieldSize()
@@ -50,7 +50,7 @@ namespace BattleField
                 field.DrawField();
                 Console.Write("Please enter coordinates: ");
                 readBuffer = Console.ReadLine();
-                Mine mineToBlow =  GameServices.ExtractMineFromString(readBuffer);
+                Mine mineToBlow = GameServices.ExtractMineFromString(readBuffer);
 
                 while (mineToBlow == null)
                 {
