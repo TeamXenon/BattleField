@@ -10,7 +10,7 @@ namespace BattleField.Tests
         public void IsValidMove_ShouldReturnTrue()
         {
             char[,] field = new char[6, 6];
-            bool isValidMove = GameServices.IsValidMove(field, 5, 5); ;
+            bool isValidMove = GameServices.IsValidMove(field, 5, 5);
 
             Assert.AreEqual(true, isValidMove);
         }
@@ -69,6 +69,49 @@ namespace BattleField.Tests
             bool falseResult = false;
 
             Assert.AreEqual(falseResult, isMine);
+        }
+
+        [TestMethod]
+        public void IsValidMove_ShouldReturnFalseOutsideOfField()
+        {
+            char[,] field = new char[2, 2];
+            bool isValidMove = GameServices.IsValidMove(field, 5, 5);
+
+            Assert.AreEqual(false, isValidMove);
+        }
+
+        [TestMethod]
+        public void IsValidMove_ShouldReturnFalseCellIsDetonated()
+        {
+            char[,] field = 
+            { 
+                { 'X', 'X', '-', '-', '-', '-' }, 
+                { 'X', 'X', '-', '-', '-', '-' }, 
+                { 'X', 'X', '-', '-', '-', '-' }, 
+                { '-', '-', '-', '-', '-', '-' }, 
+                { '-', '-', '-', '-', '-', '-' }, 
+                { '-', '-', '-', '-', '-', '-' } 
+            };
+            bool isValidMove = GameServices.IsValidMove(field, 0, 0);
+
+            Assert.AreEqual(false, isValidMove);
+        }
+
+        [TestMethod]
+        public void IsValidMove_ShouldReturnFalseCellIsEmpty()
+        {
+            char[,] field = 
+            { 
+                { 'X', 'X', '-', '-', '-', '-' }, 
+                { 'X', 'X', '-', '-', '-', '-' }, 
+                { 'X', 'X', '-', '-', '-', '-' }, 
+                { '-', '-', '-', '-', '-', '-' }, 
+                { '-', '-', '-', '-', '-', '-' }, 
+                { '-', '-', '-', '-', '-', '-' } 
+            };
+            bool isValidMove = GameServices.IsValidMove(field, 5, 5);
+
+            Assert.AreEqual(false, isValidMove);
         }
     }
 }
