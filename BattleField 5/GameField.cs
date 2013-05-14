@@ -94,12 +94,12 @@
                 int mineY = RandomNumber.Next(0, this.Size);
                 Mine newMine = new Mine(mineX, mineY);
 
-                if (this.Contains(newMine, mines))
+                if (this.CheckIfMineExists(newMine, mines))
                 {
                     i--;
                     continue;
                 }
-
+                mines.Add(newMine);
                 int mineType = RandomNumber.Next('1', '6');
                 this.Field[mineX, mineY] = Convert.ToChar(mineType);
             }
@@ -116,7 +116,7 @@
             }
         }
 
-        private bool Contains(Mine newMine, List<Mine> mines)
+        private bool CheckIfMineExists(Mine newMine, List<Mine> mines)
         {
             foreach (Mine currentMine in mines)
             {
