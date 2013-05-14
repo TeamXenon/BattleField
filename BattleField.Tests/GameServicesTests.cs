@@ -16,12 +16,27 @@ namespace BattleField.Tests
         }
 
         [TestMethod]
-        public void ExtractMineFromString()
+        public void ExtractMineFromString_ShouldReturnTrue()
         {
-            string line = "-1 2";
+            string line = "1 2";
             Mine mine = GameServices.ExtractMineFromString(line);
 
             Assert.IsInstanceOfType(mine, typeof(BattleField.Mine));
+        }
+
+        [TestMethod]
+        public void ExtractMineFromString_ShouldReturnFalse()
+        {
+            string line = "a b";
+            Mine mine = GameServices.ExtractMineFromString(line);
+
+            bool isMine = true;
+            if (typeof(Mine) == typeof(BattleField.Mine))
+            {
+                isMine = false;
+	        }
+            bool falseResult = false;
+            Assert.AreEqual(falseResult, isMine);
         }
     }
 }
