@@ -6,8 +6,8 @@
     public class GameField : IGameField
     {
         public const char EmptyCell = '-'; 
-        private const double LowerMineLimit = 0.15;
-        private const double UpperMineLimit = 0.3;
+        public const double LowerMineLimit = 0.15;
+        public const double UpperMineLimit = 0.3;
         private static readonly Random RandomNumber = new Random();
 
         public GameField(int size)
@@ -76,8 +76,8 @@
         private int DetermineMineCount()
         {
             double fields = (double)this.Size * this.Size;
-            int lowBound = (int)(LowerMineLimit * fields);
-            int upperBound = (int)(UpperMineLimit * fields);
+            int lowBound = (int)(Math.Ceiling(LowerMineLimit * fields));
+            int upperBound = (int)(Math.Floor(UpperMineLimit * fields));
             return RandomNumber.Next(lowBound, upperBound);
         }
 

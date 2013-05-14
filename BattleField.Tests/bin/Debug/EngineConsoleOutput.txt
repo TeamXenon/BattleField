@@ -1,5 +1,2 @@
 Welcome to "Battle Field" game. 
-Enter battle field size: n=   0 
-   --
-0 |- 
-Game over. Detonated mines: 0
+Enter battle field size: n=

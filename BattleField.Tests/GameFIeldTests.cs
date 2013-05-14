@@ -100,5 +100,29 @@
             string expectedResult = "   0 1 2 3 4 ";
             Assert.AreEqual(expectedResult, gameFieldFirstLine);
         }
+
+        [TestMethod]
+        public void GenerateField_TestField()
+        {
+            GameField field = new GameField(4);
+            field.GenerateField();
+            int mineCounter = 0;
+            for (int row = 0; row < 4; row++)
+            {
+                for (int col = 0; col < 4; col++)
+                {
+                    if (field.Field[row, col] != '-')
+                    {
+                        mineCounter++;
+                    }
+                }
+            }
+
+            double currentMinesPercent = (mineCounter * 100) / (4 * 4);
+            bool isBiggerThanMinRange = GameField.LowerMineLimit <= currentMinesPercent / 100;
+            bool isSmallerThanMaxRange = currentMinesPercent / 100 <= GameField.UpperMineLimit;
+            bool isInTange = isBiggerThanMinRange && isSmallerThanMaxRange;
+            Assert.AreEqual(true, isInTange);
+        }
     }
 }
