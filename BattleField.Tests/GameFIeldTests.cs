@@ -24,7 +24,7 @@
         }
 
         [TestMethod]
-        public void ContainsMinesTest_TrueResult2()
+        public void ContainsMinesTest_TrueResultWithOneMine()
         {
             int size = 8;
             GameField field = new GameField(size);
@@ -41,7 +41,7 @@
         }
 
         [TestMethod]
-        public void ContainsMinesTest_FalseResult()
+        public void ContainsMinesTest_FalseResultEmptyField()
         {
             int size = 5;
             GameField field = new GameField(size);
@@ -57,7 +57,7 @@
         }
 
         [TestMethod]
-        public void ContainsMinesTest_FalseResult2()
+        public void ContainsMinesTest_FalseResultDetonatedField()
         {
             int size = 5;
             GameField field = new GameField(size);
