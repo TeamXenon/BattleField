@@ -50,6 +50,8 @@
     <Compile Include="Explosion.cs" />
     <Compile Include="GameField.cs" />
     <Compile Include="GameServices.cs" />
+    <Compile Include="IEngine.cs" />
+    <Compile Include="IGameField.cs" />
     <Compile Include="InvalidMineCoordinatesException.cs" />
     <Compile Include="Mine.cs" />
     <Compile Include="Program.cs" />

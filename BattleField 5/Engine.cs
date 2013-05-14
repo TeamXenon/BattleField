@@ -2,7 +2,7 @@ using System;
 
 namespace BattleField
 {
-    public class Engine
+    public class Engine : IEngine
     {
         internal const int MinSize = 0;
         internal const int MaxSize = 10;
@@ -13,7 +13,7 @@ namespace BattleField
         {
             Console.WriteLine(@"Welcome to ""Battle Field"" game. ");
             int size = GetFieldSize();
-            GameField field = new GameField(size);
+            IGameField field = new GameField(size);
             field.GenerateField();
             StartInteraction(field);
         }
@@ -41,7 +41,7 @@ namespace BattleField
             return size;
         }
 
-        private void StartInteraction(GameField field)
+        private void StartInteraction(IGameField field)
         {
             string readBuffer = null;
             int blownMines = 0;

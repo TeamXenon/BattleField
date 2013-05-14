@@ -4,7 +4,7 @@
     {
         public static void Main()
         {
-            Engine game = new Engine();
+            IEngine game = new Engine();
             game.Start();
         }
     }

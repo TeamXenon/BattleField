@@ -3,7 +3,7 @@
     using System;
     using System.Collections.Generic;
 
-    public class GameField
+    public class GameField : IGameField
     {
         public const char EmptyCell = '-'; 
         private const double LowerMineLimit = 0.15;
