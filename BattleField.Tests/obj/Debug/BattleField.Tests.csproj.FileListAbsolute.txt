@@ -5,3 +5,10 @@ C:\Users\naso\Documents\Visual Studio 2012\BattleField\BattleField.Tests\bin\Deb
 C:\Users\naso\Documents\Visual Studio 2012\BattleField\BattleField.Tests\bin\Debug\BattleField.pdb
 C:\Users\naso\Documents\Visual Studio 2012\BattleField\BattleField.Tests\obj\Debug\BattleField.Tests.dll
 C:\Users\naso\Documents\Visual Studio 2012\BattleField\BattleField.Tests\obj\Debug\BattleField.Tests.pdb
+D:\Telerik\GitHub\BattleField\BattleField.Tests\bin\Debug\BattleField.Tests.dll
+D:\Telerik\GitHub\BattleField\BattleField.Tests\bin\Debug\BattleField.Tests.pdb
+D:\Telerik\GitHub\BattleField\BattleField.Tests\bin\Debug\BattleField.exe
+D:\Telerik\GitHub\BattleField\BattleField.Tests\bin\Debug\BattleField.pdb
+D:\Telerik\GitHub\BattleField\BattleField.Tests\obj\Debug\BattleField.Tests.csprojResolveAssemblyReference.cache
+D:\Telerik\GitHub\BattleField\BattleField.Tests\obj\Debug\BattleField.Tests.dll
+D:\Telerik\GitHub\BattleField\BattleField.Tests\obj\Debug\BattleField.Tests.pdb

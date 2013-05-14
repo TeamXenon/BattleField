@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="Explosion.Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="GameFIeldTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BattleField 5\BattleField.csproj">

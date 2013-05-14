@@ -25,3 +25,6 @@ C:\Users\naso\Documents\Visual Studio 2012\BattleField\BattleField 5\obj\x86\Deb
 C:\Users\naso\Documents\Visual Studio 2012\BattleField\BattleField 5\obj\x86\Debug\BattleField.csproj.GenerateResource.Cache
 C:\Users\naso\Documents\Visual Studio 2012\BattleField\BattleField 5\bin\Debug\BattleField.exe
 C:\Users\naso\Documents\Visual Studio 2012\BattleField\BattleField 5\bin\Debug\BattleField.pdb
+D:\Telerik\GitHub\BattleField\BattleField 5\bin\Debug\BattleField.exe.config
+D:\Telerik\GitHub\BattleField\BattleField 5\obj\x86\Debug\BattleField.exe
+D:\Telerik\GitHub\BattleField\BattleField 5\obj\x86\Debug\BattleField.pdb
