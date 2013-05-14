@@ -12,3 +12,10 @@ D:\Telerik\GitHub\BattleField\BattleField.Tests\bin\Debug\BattleField.pdb
 D:\Telerik\GitHub\BattleField\BattleField.Tests\obj\Debug\BattleField.Tests.csprojResolveAssemblyReference.cache
 D:\Telerik\GitHub\BattleField\BattleField.Tests\obj\Debug\BattleField.Tests.dll
 D:\Telerik\GitHub\BattleField\BattleField.Tests\obj\Debug\BattleField.Tests.pdb
+D:\BattleField\BattleField.Tests\bin\Debug\BattleField.Tests.dll
+D:\BattleField\BattleField.Tests\bin\Debug\BattleField.Tests.pdb
+D:\BattleField\BattleField.Tests\bin\Debug\BattleField.exe
+D:\BattleField\BattleField.Tests\bin\Debug\BattleField.pdb
+D:\BattleField\BattleField.Tests\obj\Debug\BattleField.Tests.csprojResolveAssemblyReference.cache
+D:\BattleField\BattleField.Tests\obj\Debug\BattleField.Tests.dll
+D:\BattleField\BattleField.Tests\obj\Debug\BattleField.Tests.pdb

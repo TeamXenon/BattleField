@@ -28,3 +28,11 @@ C:\Users\naso\Documents\Visual Studio 2012\BattleField\BattleField 5\bin\Debug\B
 D:\Telerik\GitHub\BattleField\BattleField 5\bin\Debug\BattleField.exe.config
 D:\Telerik\GitHub\BattleField\BattleField 5\obj\x86\Debug\BattleField.exe
 D:\Telerik\GitHub\BattleField\BattleField 5\obj\x86\Debug\BattleField.pdb
+D:\BattleField\BattleField 5\bin\Debug\BattleField.exe.config
+D:\BattleField\BattleField 5\obj\x86\Debug\BattleField.exe
+D:\BattleField\BattleField 5\obj\x86\Debug\BattleField.pdb
+D:\BattleField\BattleField 5\bin\Debug\BattleField.exe
+D:\BattleField\BattleField 5\bin\Debug\BattleField.pdb
+D:\BattleField\BattleField 5\obj\x86\Debug\BattleField.csprojResolveAssemblyReference.cache
+D:\BattleField\BattleField 5\obj\x86\Debug\BattleField.GameMessage.resources
+D:\BattleField\BattleField 5\obj\x86\Debug\BattleField.csproj.GenerateResource.Cache
