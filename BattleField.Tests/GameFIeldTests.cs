@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace BattleField.Tests
 {
     [TestClass]
-    public class GameFIeldTest
+    public class GameFIeldTests
     {
         [TestMethod]
         public void ConstructorTest()
