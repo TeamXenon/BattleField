@@ -4,9 +4,6 @@
 
     public class InvalidMineCoordinatesException : ApplicationException
     {
-        private int MinCoordinate { get; set; }
-        private int MaxCoordinate { get; set; }
-
         public InvalidMineCoordinatesException(string msg)
             : base(msg)
         {
@@ -32,5 +29,9 @@
                 return result;
             }
         }
+
+        private int MinCoordinate { get; set; }
+
+        private int MaxCoordinate { get; set; }
     }
 }

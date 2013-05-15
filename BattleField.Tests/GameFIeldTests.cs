@@ -76,7 +76,7 @@
         [TestMethod]
         public void DrawGamefieldSizeFiveTest()
         {
-            string consoleFile = "consoleOutput.txt";
+            string consoleFile = "GameFieldConsoleOutput.txt";
 
             GameField field = new GameField(5);
 

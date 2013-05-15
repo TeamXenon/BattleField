@@ -76,8 +76,8 @@
         private int DetermineMineCount()
         {
             double fields = (double)this.Size * this.Size;
-            int lowBound = (int)(Math.Ceiling(LowerMineLimit * fields));
-            int upperBound = (int)(Math.Floor(UpperMineLimit * fields));
+            int lowBound = (int)Math.Ceiling(LowerMineLimit * fields);
+            int upperBound = (int)Math.Floor(UpperMineLimit * fields);
             return RandomNumber.Next(lowBound, upperBound);
         }
 
@@ -98,6 +98,7 @@
                     i--;
                     continue;
                 }
+
                 mines.Add(newMine);
                 int mineType = RandomNumber.Next('1', '6');
                 this.Field[mineX, mineY] = Convert.ToChar(mineType);

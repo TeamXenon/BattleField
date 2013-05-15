@@ -1,2 +1,10 @@
-Welcome to "Battle Field" game. 
-Enter battle field size: n=
+Welcome to "Battle Field" game.
+Enter battle field size: n=   0 1 
+   ----
+0 |2 - 
+1 |- - 
+Please enter coordinates:    0 1 
+   ----
+0 |X X 
+1 |X X 
+Game over. Detonated mines: 1

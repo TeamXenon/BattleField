@@ -1,11 +1,17 @@
-using System;
-
 namespace BattleField
 {
+    using System;
+
     public class Mine
     {
         private int x;
         private int y;
+
+        public Mine(int x, int y)
+        {
+            this.X = x;
+            this.Y = y;
+        }
 
         public int X
         {
@@ -46,12 +52,5 @@ namespace BattleField
                 }
             }
         }
-
-        public Mine(int x, int y)
-        {
-            this.X = x;
-            this.Y = y;
-        }
     }
 }
-
