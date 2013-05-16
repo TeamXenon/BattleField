@@ -8,9 +8,17 @@
     public class GameFIeldTests
     {
         [TestMethod]
-        public void ConstructorTest()
+        public void GameFieldConstructor_TestWithFive()
         {
             int size = 5;
+            GameField field = new GameField(size);
+            Assert.AreEqual(size * size, field.Field.Length);
+        }
+
+        [TestMethod]
+        public void GameFieldConstructor_TestWithSeven()
+        {
+            int size = 7;
             GameField field = new GameField(size);
             Assert.AreEqual(size * size, field.Field.Length);
         }
