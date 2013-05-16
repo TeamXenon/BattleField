@@ -33,7 +33,7 @@
         [TestMethod]
         public void IsInsideField_ShouldReturnFalseXIsNegative()
         {
-            char[,] field = new char[5,5];
+            char[,] field = new char[5, 5];
             bool isInside = Explosion.IsInsideField(field, -5, 2);
             Assert.AreEqual(false, isInside);
         }

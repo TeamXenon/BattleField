@@ -1,8 +1,8 @@
 ﻿namespace BattleField.Tests
 {
     using System;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System.IO;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass]
     public class GameFIeldTests
@@ -44,6 +44,7 @@
                     field.Field[row, col] = '-';
                 }
             }
+
             field.Field[3, 4] = '4';
             bool result = field.ContainsMines();
             Assert.AreEqual(true, result);
@@ -61,6 +62,7 @@
                     field.Field[row, col] = '-';
                 }
             }
+
             bool result = field.ContainsMines();
             Assert.AreEqual(false, result);
         }
@@ -77,6 +79,7 @@
                     field.Field[row, col] = 'X';
                 }
             }
+
             bool result = field.ContainsMines();
             Assert.AreEqual(false, result);
         }
@@ -110,14 +113,15 @@
         }
 
         [TestMethod]
-        public void GenerateField_TestField()
+        public void GenerateField_TestFieldWithSizeFour()
         {
-            GameField field = new GameField(4);
+            int size = 4;
+            GameField field = new GameField(size);
             field.GenerateField();
             int mineCounter = 0;
-            for (int row = 0; row < 4; row++)
+            for (int row = 0; row < size; row++)
             {
-                for (int col = 0; col < 4; col++)
+                for (int col = 0; col < size; col++)
                 {
                     if (field.Field[row, col] != '-')
                     {
@@ -126,7 +130,32 @@
                 }
             }
 
-            double currentMinesPercent = (mineCounter * 100) / (4 * 4);
+            double currentMinesPercent = (mineCounter * 100) / (size * size);
+            bool isBiggerThanMinRange = GameField.LowerMineLimit <= currentMinesPercent / 100;
+            bool isSmallerThanMaxRange = currentMinesPercent / 100 <= GameField.UpperMineLimit;
+            bool isInTange = isBiggerThanMinRange && isSmallerThanMaxRange;
+            Assert.AreEqual(true, isInTange);
+        }
+
+        [TestMethod]
+        public void GenerateField_TestFieldWithSizeTen()
+        {
+            int size = 10;
+            GameField field = new GameField(size);
+            field.GenerateField();
+            int mineCounter = 0;
+            for (int row = 0; row < size; row++)
+            {
+                for (int col = 0; col < size; col++)
+                {
+                    if (field.Field[row, col] != '-')
+                    {
+                        mineCounter++;
+                    }
+                }
+            }
+
+            double currentMinesPercent = (mineCounter * 100) / (size * size);
             bool isBiggerThanMinRange = GameField.LowerMineLimit <= currentMinesPercent / 100;
             bool isSmallerThanMaxRange = currentMinesPercent / 100 <= GameField.UpperMineLimit;
             bool isInTange = isBiggerThanMinRange && isSmallerThanMaxRange;

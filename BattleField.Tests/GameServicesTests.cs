@@ -1,8 +1,8 @@
-using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
 namespace BattleField.Tests
 {
+    using System;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class GameServicesTests
     {
@@ -35,6 +35,7 @@ namespace BattleField.Tests
             {
                 isMine = false;
             }
+
             bool falseResult = false;
             Assert.AreEqual(falseResult, isMine);
         }
@@ -42,7 +43,7 @@ namespace BattleField.Tests
         [TestMethod]
         public void ExtractMineFromString_EmptyString()
         {
-            string line = "";
+            string line = string.Empty;
             Mine mine = GameServices.ExtractMineFromString(line);
             bool isMine = true;
 
@@ -50,6 +51,7 @@ namespace BattleField.Tests
             {
                 isMine = false;
             }
+
             bool falseResult = false;
 
             Assert.AreEqual(falseResult, isMine);
@@ -66,6 +68,7 @@ namespace BattleField.Tests
             {
                 isMine = false;
             }
+
             bool falseResult = false;
 
             Assert.AreEqual(falseResult, isMine);
@@ -133,4 +136,3 @@ namespace BattleField.Tests
         }
     }
 }
-
