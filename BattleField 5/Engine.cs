@@ -50,27 +50,36 @@ namespace BattleField
 
             while (field.ContainsMines())
             {
-                field.DrawField();
-                Console.Write(GameMessage.CoordinatesPrompt);
-                readBuffer = Console.ReadLine();
-                Mine mineToBlow = GameServices.ExtractMineFromString(readBuffer);
-
-                while (mineToBlow == null)
+                try
                 {
+                    field.DrawField();
                     Console.Write(GameMessage.CoordinatesPrompt);
                     readBuffer = Console.ReadLine();
-                    mineToBlow = GameServices.ExtractMineFromString(readBuffer);
-                }
+                    Mine mineToBlow = GameServices.ExtractMineFromString(readBuffer);
 
-                bool isValidMove = GameServices.IsValidMove(field.Field, mineToBlow.X, mineToBlow.Y);
-                if (!isValidMove)
+                    while (mineToBlow == null)
+                    {
+                        Console.Write(GameMessage.CoordinatesPrompt);
+                        readBuffer = Console.ReadLine();
+                        mineToBlow = GameServices.ExtractMineFromString(readBuffer);
+                    }
+
+                    bool isValidMove = GameServices.IsValidMove(field.Field, mineToBlow.X, mineToBlow.Y);
+                    if (!isValidMove)
+                    {
+                        Console.WriteLine(GameMessage.InvalidMove);
+                        continue;
+                    }
+
+                    Explosion.Explode(field.Field, mineToBlow);
+                    blownMines++;
+                }
+                catch (InvalidMineCoordinatesException)
                 {
-                    Console.WriteLine(GameMessage.InvalidMove);
+                    Console.WriteLine(GameMessage.InvalidIndex);
                     continue;
                 }
-
-                Explosion.Explode(field.Field, mineToBlow);
-                blownMines++;
+               
             }
 
             field.DrawField();
